@@ -1,0 +1,39 @@
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.info{
+    width: 1536px;
+    height: 585px;
+    background-image: url(/assets/imagenes/1672-libros.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    .hello{
+        font-size: 20pt;
+        color: white;
+        margin-left: 110px;
+        margin-bottom: 70px;
+    }
+    .name{
+        font-size: 32pt;
+        color: #00B159;
+    }
+    h1{
+        -webkit-text-stroke: 2px black;
+    }
+    .profesion{
+        margin-top: 70px;
+        font-size: 20pt;
+        color: white
+    }
