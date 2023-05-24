@@ -8,6 +8,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { BooksComponent } from './pages/books/books.component';
+import { CardComponent } from './components/card/card.component';
+import { RefIdBookPipe } from './pipes/ref-id-book.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { RegisterComponent } from './pages/register/register.component';
     FooterComponent,
     HomeComponent,
     FormRegisterComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    BooksComponent,
+    CardComponent,
+    RefIdBookPipe
   ],
   imports: [
     BrowserModule,

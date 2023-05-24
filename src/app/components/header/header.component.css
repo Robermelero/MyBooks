@@ -5,7 +5,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .header{
-    width: 1536px;
+    width: 100%;
     height: 65px;
     background-color: #00B159;
 
@@ -14,7 +14,8 @@
     align-items: center;
 }
     h1{
-        margin-left: 20px;
+        margin-left: 30px;
+        width: 10%;
     }
     .logo{
         height: 100%;
@@ -23,12 +24,12 @@
         margin-left: 25px;
     }
     .vacio{
-        width: 40%;
+        width: 30%;
         margin-left: 100px;
         margin-right: 120px;
     }
     .button1{
-        margin-right: 50px;
+        margin-right: 45px;
     }
     
     header a{
