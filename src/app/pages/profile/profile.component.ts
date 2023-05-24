@@ -12,7 +12,7 @@ export class ProfileComponent
 
   constructor (){
 
-    this.user = new User("23435", "Roberto", "Melero","roberto@gmail.com","https://travesiapirenaica.com/wp-content/uploads/2018/12/C%c3%b3mo-esquiar-en-nieve-virgen_by-mauro-paillex_800x600.jpg","486484984")
+    this.user = new User(23435, "Roberto", "Melero","roberto@gmail.com","https://travesiapirenaica.com/wp-content/uploads/2018/12/C%c3%b3mo-esquiar-en-nieve-virgen_by-mauro-paillex_800x600.jpg","486484984")
   }
 
  

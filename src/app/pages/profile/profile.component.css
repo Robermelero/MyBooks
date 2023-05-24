@@ -27,7 +27,7 @@
     border: 2px solid rgb(152, 137, 109);
     border-radius: 4px;
     background-color: wheat;
-    opacity: 0.7;
+    opacity: 0.8;
 }
     .foto{
         margin-top: 40px;
@@ -39,8 +39,7 @@
         padding: 7px;
         font-size: 30pt;
         color: rgb(46, 42, 42);
-        margin-top: 13px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         margin-left: 50px;
 
     }
@@ -57,8 +56,6 @@
         color: #00B159;
         -webkit-text-stroke: 0.5px black;
 
-    }
-    .login p{
     }
     .login h3{
         border: 2px solid rgb(13, 13, 12);
@@ -85,7 +82,7 @@
     border: 2px solid wheat;
     border-radius:4px ;
     background-color: wheat;
-    opacity: 0.7;
+    opacity: 0.8;
 }
     .busqueda{
         background-color: transparent;
