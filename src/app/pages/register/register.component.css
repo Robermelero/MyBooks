@@ -7,8 +7,8 @@
 
 .info{
     position: relative;
-    width: 1536px;
-    height: 585px;
+    width: 100vh;
+    height: 84vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

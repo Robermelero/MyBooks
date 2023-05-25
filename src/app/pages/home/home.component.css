@@ -7,8 +7,8 @@
 }
 
 .info{
-    width: 1536px;
-    height: 585px;
+    width: 215,1vh;
+    height: 84vh;
     background-image: url(/assets/imagenes/1672-libros.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -22,7 +22,8 @@
     .hello{
         font-size: 20pt;
         color: white;
-        margin-left: 110px;
+        margin-left: 200px;
+        margin-right: 10px;
         margin-bottom: 70px;
     }
     .name{
