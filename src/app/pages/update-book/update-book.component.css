@@ -1,0 +1,102 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 84vh;
+    max-width: 100%;
+  }
+  
+  .info {
+    position: relative;
+  }
+  
+  .background-image {
+    width: 100%;
+    min-height: 84vh;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px);
+    opacity: 0.7;
+    position: absolute;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+    
+    .añadir{
+        position: relative;
+        width: 300px;
+        height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-evenly ;
+        align-items: center;
+        margin: 70px;
+        margin-top: 50px;
+        margin-bottom: 110px;
+        gap: 10px;
+    }
+        .busqueda{
+            background-color: transparent;
+            width: 100%;
+            height: 15%;
+            padding: 7px;
+            border-radius: 3px;
+            border: 1px solid rgb(219, 219, 219);
+            font-size: 12pt;
+            color: white;
+    }
+        .but{
+            background-color:#00B159 ;
+            color: white;
+            width: 160px;
+            height: 40px;
+            padding: 6px;
+            border-radius: 8px;
+            margin-top: 5px;
+            border: transparent;
+            font-size: 14pt;
+            font-weight: bold;
+        }
+        
+        .añadir ::placeholder{
+            color: white;
+            -webkit-text-stroke: 0.1px black;
+        }
+        h1{
+            color: #00B159;
+            font-size: 43px;
+            margin-bottom: 10px;
+            -webkit-text-stroke: 1px black;
+        }
+        .bus{
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          align-items: center;;
+          margin-top: 50px;
+          margin-left: 620px;
+          gap: 10px;
+      }
+          .busqueda1{
+              background-color: white;
+              width: 30%;
+              height: 15%;
+              padding: 7px;
+              border-radius: 3px;
+              border: 1px solid rgb(219, 219, 219);
+              font-size: 14pt;
+      }
+          .but1{
+              background-color:#00B159 ;
+              color: white;
+              width: 140px;
+              height: 40px;
+              padding: 6px;
+              border-radius: 8px;
+              border: transparent;
+              font-size: 14pt;
+              font-weight: bold;
+          }

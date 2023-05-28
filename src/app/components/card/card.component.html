@@ -1,0 +1,16 @@
+
+<div class="card">
+    <div class="face front">
+        <img [src]="libroPadre.photo">
+    </div>
+    <div class="face back">
+        <button class="buter" type="button" (click)="quitarCaja()" >X</button>
+        <h3>{{libroPadre.title}}</h3>
+        <h5>{{libroPadre.author}}</h5>
+        <h6>{{libroPadre.price}}</h6>
+        <p>{{libroPadre.type}}</p>
+        <p>{{libroPadre.id_book | refIdBook}}</p>
+        <p>{{libroPadre.id_user}}</p>
+        <button class="but" [ngClass]= "esImpar ? 'but' : 'but2'" type="button">Comprar</button>
+    </div>
+  </div>
