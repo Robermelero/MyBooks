@@ -1,0 +1,21 @@
+<div class="main-container">
+  <div class="info">
+    <img src="/assets/imagenes/1672-libros.jpg" class="background-image">
+    <div class="bus">
+      <input class="busqueda1" id="codigo" #codigo placeholder="Id libro">
+      <button class="but1" type="button" (click)="busqueda(+codigo.value)">Buscar Libro</button>
+    </div>
+    <div class="container">
+      <form class="añadir">
+        <h1>Modificar libro</h1>
+        <input class="busqueda" id="titulo" #titulo [value]="libroModificado?.title" placeholder="Titulo">
+        <input class="busqueda" id="tipo" #tapa [value]="libroModificado?.type" placeholder="Tapa blanda/dura">
+        <input class="busqueda" id="autor" #autor [value]="libroModificado?.author" placeholder="Autor">
+        <input class="busqueda" id="precio" #precio [value]="libroModificado?.price" placeholder="Precio">
+        <input class="busqueda" id="foto" #foto [value]="libroModificado?.photo" placeholder="Portada">
+        <input class="busqueda" id="codigo" #codigo [value]="libroModificado?.id_book" placeholder="Codigo libro">
+        <button class="but" type="button" (click)="modificar(titulo.value, tapa.value, autor.value, +precio.value, foto.value, +codigo.value)">Modificar Libro</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,17 @@
 .main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 84vh;
     max-width: 100%;
   }
-
+  
   .info {
     position: relative;
   }
   
   .background-image {
     width: 100%;
+    min-height: 84vh;
     height: 100%;
     object-fit: cover;
     filter: blur(10px);
@@ -23,130 +24,33 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-    .card{
-        position: relative;
-        width: 270px;
-        height: 350px;
-        margin: 50px;
-    
-
+  
+  .bus{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;;
+    margin-top: 50px;
+    margin-left: 620px;
+    gap: 10px;
+}
+    .busqueda{
+        background-color: white;
+        width: 30%;
+        height: 15%;
+        padding: 7px;
+        border-radius: 3px;
+        border: 1px solid rgb(219, 219, 219);
+        font-size: 14pt;
+}
+    .but{
+        background-color:#00B159 ;
+        color: white;
+        width: 140px;
+        height: 40px;
+        padding: 6px;
+        border-radius: 8px;
+        border: transparent;
+        font-size: 14pt;
+        font-weight: bold;
     }
-        .card .face
-        {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: .7s;
-        }
-        .card .front{
-            transform: perspective(600px) rotateY(0deg);
-            box-shadow: 0 5px 10px black;
-        }
-        .card .front img{
-            position: relative;
-            width:100%;
-            height: 100%;
-            object-fit: caption;
-
-        }
-        .card .back{
-            transform: perspective(600px) rotateY(180deg);
-            background: rgb(3, 35, 54);
-            padding: 15px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 5px 10px; 
-        }
-        .card .back h3{
-            font-size: 16pt;
-        }
-        .card .back h5{
-            font-size: 15pt;
-        }
-        .card .back h6{
-            font-size: 13pt;
-        }
-        .card .back p{
-            font-size: 13pt;
-        }
-        .card .back .but{
-            background-color:#00B159 ;
-            color: white;
-            width: 150px;
-            height: 40px;
-            padding: 6px;
-            border-radius: 8px;
-            border: transparent;
-            font-size: 12pt;
-            font-weight: bold;
-            margin-left: 45px;
-        }
-        .card .back .but2{
-            background-color:#d11141 ;
-            color: white;
-            width: 150px;
-            height: 40px;
-            padding: 6px;
-            border-radius: 8px;
-            border: transparent;
-            font-size: 12pt;
-            font-weight: bold;
-            margin-left: 45px;
-        }
-    .card:hover .front{
-        transform: perspective(600px) rotateY(180deg)
-    }
-    .card:hover .back{
-        transform: perspective(600px) rotateY(360deg)
-    }
-    .añadir{
-        position: relative;
-        width: 275px;
-        height: 230px;
-        display: flex;
-        flex-direction: column;
-        justify-content:space-evenly ;
-        align-items: center;
-        margin: 52px;
-        margin-top: 105px;
-        margin-bottom: 110px;
-        gap: 10px;
-    }
-        .busqueda{
-            background-color: transparent;
-            width: 100%;
-            height: 15%;
-            padding: 7px;
-            border-radius: 3px;
-            border: 1px solid rgb(219, 219, 219);
-            font-size: 12pt;
-            color: white;
-    }
-        .but{
-            background-color:#00B159 ;
-            color: white;
-            width: 140px;
-            height: 40px;
-            padding: 6px;
-            border-radius: 8px;
-            margin-top: 5px;
-            border: transparent;
-            font-size: 14pt;
-            font-weight: bold;
-        }
-        
-        .añadir ::placeholder{
-            color: white;
-            -webkit-text-stroke: 0.1px black;
-        }
-        h1{
-            color: #00B159;
-            font-size: 37px;
-            margin-bottom: 10px;
-            -webkit-text-stroke: 1px black;
-        }

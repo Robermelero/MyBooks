@@ -1,0 +1,17 @@
+<div class="main-container">
+    <div class="info">
+      <img src="/assets/imagenes/1672-libros.jpg" class="background-image">
+      <div class="container">
+        <form class="añadir">
+          <h1>Añadir libro</h1>
+          <input class="busqueda" id="titulo" #titulo placeholder="Titulo">
+          <input class="busqueda" id="tipo" #tapa placeholder="Tapa blanda/dura">
+          <input class="busqueda" id="autor" #autor placeholder="Autor">
+          <input class="busqueda" id="precio" #precio placeholder="Precio">
+          <input class="busqueda" id="foto" #foto placeholder="Portada">
+          <input class="busqueda" id="codigo" #codigo placeholder="Codigo libro">
+          <button class="but" type="button" (click)="register(titulo.value, tapa.value, autor.value, +precio.value, foto.value, +codigo.value)">Insertar Libro</button>
+        </form>
+      </div>
+    </div>
+  </div>
