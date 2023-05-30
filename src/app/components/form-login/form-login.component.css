@@ -1,0 +1,60 @@
+form{
+    position: relative;
+    width: 600px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly ;
+    align-items: flex-end;
+    margin-top: 230px;
+    margin-left: 500px;
+    gap: 10px;
+}
+    .form-group{
+        font-size: 14pt;
+        color: white;
+    }
+    .form-control1{
+        background-color: transparent;
+        width: 400px;
+        height: 30px;
+        padding: 7px;
+        border-radius: 3px;
+        border: 1px solid rgb(219, 219, 219);
+        font-size: 14pt;
+        color: white;
+    }
+    .form-control2{
+        background-color: transparent;
+        width: 400px;
+        height: 30px;
+        padding: 7px;
+        border-radius: 3px;
+        border: 1px solid rgb(219, 219, 219);
+        font-size: 14pt;
+        color: white;
+    }
+    label{
+        margin-right: 40px;
+    }
+    button{
+        color: #00B159;
+        -webkit-text-stroke: 0.6px black;
+        width: 140px;
+        height: 40px;
+        padding: 6px;
+        border-radius: 8px;
+        margin-top: 5px;
+        border: transparent;
+        font-size: 14pt;
+        font-weight: bold;
+        margin-right: 130px;
+    }
+    .invalid-feedback{
+        color: red;
+        font-weight: 600;
+        -webkit-text-stroke: 0.6px black;
+        font-size: 14pt;
+        margin-left: 140px;
+    }
+

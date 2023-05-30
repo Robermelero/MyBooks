@@ -1,8 +1,9 @@
-import { literalMap } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-update-book',
@@ -15,7 +16,7 @@ export class UpdateBookComponent implements OnInit{
   public books : Book[]
   public libroBuscado : Book;
   public libroModificado : Book;
-constructor(public bookservice:BooksService, public router: Router){
+constructor(public bookservice:BooksService, public router: Router, public toastr: ToastrService){
 
 }
 
@@ -24,11 +25,11 @@ busqueda(codigo:number): void {
   this.libroBuscado = this.bookservice.getOne(codigo)
   if(this.libroBuscado){
     this.libroModificado = {...this.libroBuscado}
-    alert ("El libro se ha encontrado")
+    this.toastr.success ("El libro se ha encontrado", 'Éxito')
   }
   else{
     this.books = this.bookservice.getAll()
-    alert ("No ha sido posible encontrar el libro introducido")
+    this.toastr.error ("No ha sido posible encontrar el libro introducido", 'Error')
   }
   
 };
@@ -43,10 +44,10 @@ modificar(nuevoTitulo: string, nuevoTipo: string, nuevoAuthor: string, nuevoPrec
 
   if(this.bookservice.edit(this.libroModificado)){
     this.books = this.bookservice.getAll();
-    alert("El libro se ha modificado correctamente");
+    this.toastr.success("El libro se ha modificado correctamente", 'Éxito');
     this.router.navigateByUrl('/books');
   }
-  else {alert("No se ha modificado el libro")}
+  else {this.toastr.error("No se ha modificado el libro", 'Error')}
 };
 
 ngOnInit(): void {

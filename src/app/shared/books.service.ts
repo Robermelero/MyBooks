@@ -33,9 +33,9 @@ add(book:Book): void{
 }
 
 edit(book:Book):boolean{
-  let cambiar = this.books.findIndex(b => b.id_book === book.id_book);
-  if (cambiar !== -1) {
-    this.books[cambiar] = book;
+  let i = this.books.findIndex(b => b.id_book === book.id_book);
+  if (i !== -1) {
+    this.books[i] = book;
     return true;
   }
   return false;
