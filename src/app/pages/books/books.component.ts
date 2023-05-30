@@ -14,7 +14,7 @@ export class BooksComponent implements OnInit
   public books : Book[]
   
 
-  constructor (public bookservice: BooksService, public toastr: ToastrService ){
+  constructor (public bookservice: BooksService, private toastr: ToastrService ){
     this.books=this.bookservice.getAll()
 
 }
@@ -22,11 +22,11 @@ busqueda(codigo:number): void {
   let id = this.bookservice.getOne(codigo)
   if(id){
     this.books = [id]
-    this.toastr.success("El libro se ha encontrado", 'Éxito')
+    this.toastr.success('El libro se ha encontrado')
   }
   else{
     this.books = this.bookservice.getAll()
-    this.toastr.error (" el ID introducido no es correcto", 'Error')
+    this.toastr.error (' el ID introducido no es correcto')
   }
   
 }
@@ -34,7 +34,7 @@ borrar(libroPadre:Book){
 let borrado = this.bookservice.delete(libroPadre.id_book);
 if(borrado){
 this.books = this.bookservice.getAll()}
-this.toastr.success ("El libro seleccionado ha sido borrado", 'Éxito')
+this.toastr.warning('El libro seleccionado ha sido borrado')
 }
 ngOnInit(): void {
   

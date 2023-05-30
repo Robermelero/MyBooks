@@ -51,10 +51,17 @@ form{
         margin-right: 130px;
     }
     .invalid-feedback{
-        color: red;
+        color: #a31b1b;
         font-weight: 600;
         -webkit-text-stroke: 0.6px black;
         font-size: 14pt;
         margin-left: 140px;
+    }
+    .invalid-feedback1{
+        color: #a31b1b;
+        font-weight: 600;
+        -webkit-text-stroke: 0.6px black;
+        font-size: 14pt;
+        margin-left: 190px;
     }
 

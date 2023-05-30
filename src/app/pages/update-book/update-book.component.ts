@@ -16,7 +16,7 @@ export class UpdateBookComponent implements OnInit{
   public books : Book[]
   public libroBuscado : Book;
   public libroModificado : Book;
-constructor(public bookservice:BooksService, public router: Router, public toastr: ToastrService){
+constructor(public bookservice:BooksService, public router: Router, private toastr: ToastrService){
 
 }
 
@@ -25,11 +25,11 @@ busqueda(codigo:number): void {
   this.libroBuscado = this.bookservice.getOne(codigo)
   if(this.libroBuscado){
     this.libroModificado = {...this.libroBuscado}
-    this.toastr.success ("El libro se ha encontrado", 'Éxito')
+    this.toastr.success ('El libro se ha encontrado')
   }
   else{
     this.books = this.bookservice.getAll()
-    this.toastr.error ("No ha sido posible encontrar el libro introducido", 'Error')
+    this.toastr.error ('No ha sido posible encontrar el libro introducido')
   }
   
 };
@@ -44,10 +44,10 @@ modificar(nuevoTitulo: string, nuevoTipo: string, nuevoAuthor: string, nuevoPrec
 
   if(this.bookservice.edit(this.libroModificado)){
     this.books = this.bookservice.getAll();
-    this.toastr.success("El libro se ha modificado correctamente", 'Éxito');
+    this.toastr.success('El libro se ha modificado correctamente');
     this.router.navigateByUrl('/books');
   }
-  else {this.toastr.error("No se ha modificado el libro", 'Error')}
+  else {this.toastr.error('No se ha modificado el libro')}
 };
 
 ngOnInit(): void {

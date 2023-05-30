@@ -1,8 +1,7 @@
 
-import { FormsModule } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Login } from 'src/app/models/login';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-form-login',
@@ -11,16 +10,16 @@ import { Login } from 'src/app/models/login';
 })
 export class FormLoginComponent implements OnInit {
 
-  public login : Login
+  public user : User
 
   constructor()
   {
-    this.login = new Login("","");
+    this.user = new User(0,"","","","","");
   }
 
   onSubmit(form:NgForm){
 
-     return this.login
+     return this.user
 
   }
 

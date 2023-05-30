@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddBookComponent {
 @Output() bookAdded = new EventEmitter<Book>();
 
-  constructor(public bookservice:BooksService, public router: Router, public toastr: ToastrService){}
+  constructor(public bookservice:BooksService, public router: Router,  ){}
 
 register(nuevoTitulo: string, 
         nuevoTipo: string, 
@@ -28,9 +28,9 @@ register(nuevoTitulo: string,
   this.bookservice.add(nuevo);
   this.bookAdded.emit(nuevo);
 
- if(nuevo) {this.toastr.success("El libro ha sido añadido correctamente", 'Éxito')
- this.router.navigateByUrl('/books');
-}
-else{ this.toastr.error("El libro no ha podido añadirse correctamente", 'Error')}
+//  if(nuevo) {this.toastr.success('El libro ha sido añadido correctamente')
+//  this.router.navigateByUrl('/books');
+// }
+// else{ this.toastr.error('El libro no ha podido añadirse correctamente')}
 }
 }
