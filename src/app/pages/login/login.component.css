@@ -1,0 +1,24 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 84vh;
+    max-width: 100%;
+  }
+  
+  .info {
+    position: relative;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: 84vh;
+    object-fit: cover;
+    filter: blur(10px);
+    opacity: 0.7;
+    position: absolute;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }

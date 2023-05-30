@@ -1,0 +1,23 @@
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" name="email" class="form-control1" [(ngModel)]="user.email" #emailId="ngModel"
+        [ngClass]="{ 'is-invalid': (emailId.dirty || emailId.touched) && emailId.invalid}" email required>
+      <div *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid" class="invalid-feedback">
+        <div *ngIf="emailId.errors.required">La dirección de email es obligatoria</div>
+        <div *ngIf="emailId.errors.email">La dirección de email es incorrecta</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" class="form-control2" [(ngModel)]="user.password" #passwordId="ngModel"
+        [ngClass]="{ 'is-invalid': (passwordId.dirty || passwordId.touched) && passwordId.invalid}" minlength="8" maxlength="16" required>
+      <div *ngIf="(passwordId.dirty || passwordId.touched) && passwordId.invalid" class="invalid-feedback1">
+        <div *ngIf="passwordId.errors.required">La contraseña es obligatoria</div>
+        <div *ngIf="passwordId.errors.minlength">La contraseña debe tener al menos 8 caracteres</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-dark btn-block" [disabled]="userForm.invalid">LOGIN</button>
+    </div>
+  </form>
