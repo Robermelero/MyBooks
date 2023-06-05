@@ -1,10 +1,10 @@
 
-import { literalMap } from '@angular/compiler';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from 'src/app/models/book';
-import { BooksService } from 'src/app/shared/books.service';
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { BooksService } from 'src/app/shared/books.service';
+import { Respuesta } from 'src/app/models/respuesta';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class AddBookComponent {
 @Output() bookAdded = new EventEmitter<Book>();
 
-  constructor(public bookservice:BooksService, public router: Router,  ){}
+  constructor(public bookservice:BooksService, public router: Router, private toastr: ToastrService, public apiService: BooksService){}
 
 register(nuevoTitulo: string, 
         nuevoTipo: string, 
@@ -25,12 +25,13 @@ register(nuevoTitulo: string,
         nuevoCodigo: number=0, 
         nuevoUser: number=0){
   let nuevo: Book = new Book(nuevoTitulo, nuevoTipo, nuevoAuthor, nuevoPrecio, nuevaFoto, nuevoCodigo,nuevoUser)
-  this.bookservice.add(nuevo);
-  this.bookAdded.emit(nuevo);
-
-//  if(nuevo) {this.toastr.success('El libro ha sido añadido correctamente')
-//  this.router.navigateByUrl('/books');
-// }
-// else{ this.toastr.error('El libro no ha podido añadirse correctamente')}
+  this.apiService.add(nuevo).subscribe((resp:Respuesta) =>
+  {
+ if(!resp.error) 
+ {this.toastr.success('El libro ha sido añadido correctamente')
+ this.router.navigateByUrl('/books');
+}
+else this.toastr.error('El libro no ha podido añadirse correctamente')
+})
 }
 }

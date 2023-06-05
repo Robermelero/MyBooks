@@ -11,7 +11,7 @@
         </div>
         <ng-template #esFalso>
             <ng-container *ngFor="let book of books; let even = even; let i = index">
-              <app-card [libroPadre] = "book" [esImpar] = "even" (quitar) = borrar($event)></app-card>
+              <app-card [libroPadre] = "book" [esImpar] = "even" (quitar) = "borrar($event)"></app-card>
             </ng-container>
         </ng-template>
     </div>

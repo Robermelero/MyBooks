@@ -16,23 +16,23 @@ export class UpdateBookComponent implements OnInit{
   public books : Book[]
   public libroBuscado : Book;
   public libroModificado : Book;
-constructor(public bookservice:BooksService, public router: Router, private toastr: ToastrService){
+constructor(public apiService: BooksService, public bookservice:BooksService, public router: Router, private toastr: ToastrService){
 
 }
 
 busqueda(codigo:number): void {
   
-  this.libroBuscado = this.bookservice.getOne(codigo)
-  if(this.libroBuscado){
-    this.libroModificado = {...this.libroBuscado}
+ this.apiService.getOne(codigo).subscribe((libro: Book) => {
+  if (libro) { 
+    this.libroBuscado = libro;
+    this.libroModificado = {...libro}
     this.toastr.success ('El libro se ha encontrado')
   }
   else{
-    this.books = this.bookservice.getAll()
     this.toastr.error ('No ha sido posible encontrar el libro introducido')
   }
-  
-};
+});
+}
 
 modificar(nuevoTitulo: string, nuevoTipo: string, nuevoAuthor: string, nuevoPrecio: number, nuevaFoto: string, nuevoCodigo: number): void {
   this.libroModificado.title = nuevoTitulo;
@@ -42,13 +42,15 @@ modificar(nuevoTitulo: string, nuevoTipo: string, nuevoAuthor: string, nuevoPrec
   this.libroModificado.photo = nuevaFoto;
   this.libroModificado.id_book = nuevoCodigo;
 
-  if(this.bookservice.edit(this.libroModificado)){
-    this.books = this.bookservice.getAll();
+  this.apiService.edit(this.libroModificado).subscribe((listo) => {
+    if (listo) {
     this.toastr.success('El libro se ha modificado correctamente');
     this.router.navigateByUrl('/books');
   }
   else {this.toastr.error('No se ha modificado el libro')}
-};
+  });
+}
+
 
 ngOnInit(): void {
   

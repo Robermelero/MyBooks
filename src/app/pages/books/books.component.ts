@@ -14,41 +14,36 @@ export class BooksComponent implements OnInit
   public books : Book[]
   
 
-  constructor (public bookservice: BooksService, private toastr: ToastrService ){
-    this.books=this.bookservice.getAll()
+  constructor (public bookservice: BooksService, private toastr: ToastrService, private apiService: BooksService){
+    this.apiService.getAll().subscribe((data: Object)=> {
+      this.books = data as Book[];
+    });
+  }
 
-}
-busqueda(codigo:number): void {
-  let id = this.bookservice.getOne(codigo)
-  if(id){
-    this.books = [id]
-    this.toastr.success('El libro se ha encontrado')
+busqueda(codigo: number): void {
+  this.apiService.getOne(codigo).subscribe(
+  (book: Book) => {
+    if (book) {
+      this.books = [book];
+      this.toastr.success('El libro se ha encontrado');
+    } 
+    else {
+      this.apiService.getAll().subscribe((data: Object)=> {
+        this.books = data as Book[];
+      });
+      this.toastr.error('El ID introducido no es correcto');
+      };
   }
-  else{
-    this.books = this.bookservice.getAll()
-    this.toastr.error (' el ID introducido no es correcto')
-  }
-  
-}
+)}
 borrar(libroPadre:Book){
-let borrado = this.bookservice.delete(libroPadre.id_book);
-if(borrado){
-this.books = this.bookservice.getAll()}
+this.apiService.delete(libroPadre.id_book).subscribe(() => {
+
+this.books = this.books.filter((book) => book.id_book !== 
+libroPadre.id_book);
 this.toastr.warning('El libro seleccionado ha sido borrado')
+});
 }
-ngOnInit(): void {
-  
+ngOnInit(): void { 
 }
-
 }
-
- 
-
-
-
-
-
-
-
-
 
