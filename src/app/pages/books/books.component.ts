@@ -20,8 +20,9 @@ export class BooksComponent implements OnInit
     });
   }
 
-busqueda(codigo: number): void {
-  this.apiService.getOne(codigo).subscribe(
+busqueda(codigo: string): void {
+  let number : number = Number(codigo)
+  this.apiService.getOne(number).subscribe(
   (book: Book) => {
     if (book) {
       this.books = [book];
@@ -35,11 +36,11 @@ busqueda(codigo: number): void {
       };
   }
 )}
-borrar(libroPadre:Book){
-this.apiService.delete(libroPadre.id_book).subscribe(() => {
+borrar(books:Book){
+this.apiService.delete(books.id_book).subscribe(() => {
 
 this.books = this.books.filter((book) => book.id_book !== 
-libroPadre.id_book);
+books.id_book);
 this.toastr.warning('El libro seleccionado ha sido borrado')
 });
 }

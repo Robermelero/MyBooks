@@ -3,7 +3,7 @@
     <img src="/assets/imagenes/1672-libros.jpg" class="background-image">
       <div class="bus">
         <input class="busqueda" id="codigo" #codigo placeholder="Id libro">
-        <button class="but" type="button" (click)="busqueda(+codigo.value)">Buscar Libro</button>
+        <button class="but" type="button" (click)="busqueda(codigo.value)">Buscar Libro</button>
       </div>
       <div class="container">
         <div *ngIf="books.length === 0; else esFalso">
