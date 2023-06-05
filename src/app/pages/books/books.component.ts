@@ -38,7 +38,7 @@ busqueda(codigo: number): void {
 borrar(libroPadre:Book){
 this.apiService.delete(libroPadre.id_book).subscribe(() => {
 
-this.books = this.books.filter((book) => book.id_book !== 
+this.books = this.books.filter((book) => book.id_book != 
 libroPadre.id_book);
 this.toastr.warning('El libro seleccionado ha sido borrado')
 });
