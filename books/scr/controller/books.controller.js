@@ -81,8 +81,8 @@ function deleteBooks(request, response)
 {
     let respuesta;
     let id = request.params.id_book;
-    let filtrado = books.filter(book => book.id_book !== id);
-    if (filtrado.length !== books.length) {
+    let filtrado = books.filter(book => book.id_book != id);
+    if (filtrado.length != books.length) {
         books = filtrado;
         respuesta = {error: false, codigo: 200,
                     mensaje: 'Libro borrado', data: filtrado}
