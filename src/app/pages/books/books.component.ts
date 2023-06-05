@@ -38,7 +38,8 @@ busqueda(codigo: string): void {
 )}
 borrar(books:Book){
 this.apiService.delete(books.id_book).subscribe(() => {
-
+this.books = this.books.filter((book) => book.id_book != 
+books.id_book);
 this.toastr.warning('El libro seleccionado ha sido borrado')
 });
 }
