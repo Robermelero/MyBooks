@@ -1,4 +1,5 @@
 import { Book } from "./book";
+import { User } from "./user";
 
 export class Respuesta 
 {
@@ -6,5 +7,6 @@ export class Respuesta
                  public error: boolean,
                  public codigo: number,
                  public mensaje: string,
-                 public data: Book ){}
+                 public data: Book[], 
+                 public data_login: User){}
 }

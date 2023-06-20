@@ -13,10 +13,10 @@ export class CardComponent implements OnInit
 
 @Input() libroPadre:Book;
 @Input() esImpar: boolean;
-@Output() quitar = new EventEmitter<Book>();
+@Output() quitar = new EventEmitter<Number>();
 constructor(){}
 quitarCaja(){
-this.quitar.emit(this.libroPadre);
+this.quitar.emit(this.libroPadre.id_book);
 }
 ngOnInit(): void {  
 }

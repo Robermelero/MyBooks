@@ -1,49 +1,60 @@
 import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Book } from 'src/app/models/book';
-import { BooksService } from 'src/app/shared/books.service';
-
+import { Component, OnInit } from '@angular/core';
+import { Book } from '../../models/book';
+import { BooksService } from '../../shared/books.service';
+import { UserService } from 'src/app/shared/user.service';
+import { Respuesta } from 'src/app/models/respuesta';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent implements OnInit
-{
-  public books : Book[]
+export class BooksComponent implements OnInit {
+  public books: Book[];
+  public book :  Book
+
+  constructor(private toastr: ToastrService, private booksService: BooksService, private userService: UserService) {
+    this.books=[]
+    }
+  ngOnInit(): void {
+    this.booksService.getLibros().subscribe((resp:Respuesta) => {
+      this.books= resp.data
+      console.log(resp)
+    })
+    }
   
 
-  constructor (public bookservice: BooksService, private toastr: ToastrService, private apiService: BooksService){
-    this.apiService.getAll().subscribe((data: Object)=> {
-      this.books = data as Book[];
-    });
+  searchBookById(id:string){
+    let number : number = Number(id)
+    console.log(number)
+    this.booksService.getByUserAndBook(number)
+    .subscribe((resp: Respuesta)=>
+    {
+      if (id == "" || id == null || id == undefined || resp.mensaje == "No hay libros"){
+        this.booksService.getLibros()
+        .subscribe((resp:Respuesta) => {
+          this.books= resp.data
+          console.log(resp)
+        })    
+        this.toastr.warning("El libro no existe")
+      }else{
+        this.books = resp.data;
+        console.log(this.books)
+        this.toastr.success("Libro encontrado")
+      }
+    },
+    )
   }
 
-busqueda(codigo: string): void {
-  let number : number = Number(codigo)
-  this.apiService.getOne(number).subscribe(
-  (book: Book) => {
-    if (book) {
-      this.books = [book];
-      this.toastr.success('El libro se ha encontrado');
-    } 
-    else {
-      this.apiService.getAll().subscribe((data: Object)=> {
-        this.books = data as Book[];
-      });
-      this.toastr.error('El ID introducido no es correcto');
-      };
+
+  deleteBook(bookId: number): void {
+    this.booksService.deleteBook(bookId).subscribe(() => {
+        let filtrado = this.books.filter(book => book.id_book !== bookId);
+        this.books = filtrado;
+        console.log(bookId)
+        this.toastr.warning('El libro seleccionado ha sido borrado');
+      }
+    )}
   }
-)}
-borrar(books:Book){
-this.apiService.delete(books.id_book).subscribe(() => {
-this.books = this.books.filter((book) => book.id_book != 
-books.id_book);
-this.toastr.warning('El libro seleccionado ha sido borrado')
-});
-}
-ngOnInit(): void { 
-}
-}
 

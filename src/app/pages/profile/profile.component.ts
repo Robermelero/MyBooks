@@ -1,33 +1,41 @@
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/shared/user.service';
+import { Respuesta } from '../../models/respuesta';
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent 
-{
-  public user : User
+export class ProfileComponent {
+  public usuario : User;
 
-  constructor (){
-
-    this.user = new User(23435, "Roberto", "Melero","roberto@gmail.com","https://travesiapirenaica.com/wp-content/uploads/2018/12/C%c3%b3mo-esquiar-en-nieve-virgen_by-mauro-paillex_800x600.jpg","486484984")
+  constructor(public userService: UserService, private toastr: ToastrService){
+    this.usuario = this.userService.user;
+    console.log(this.usuario)
   }
-
- 
-enviar2(nuevoNombre: string, nuevoApellido: string, nuevoMail: string, nuevaPhoto: string){
-  console.log(this.user.name);
-  this.user.name = nuevoNombre
-  console.log(this.user.name)
-  console.log(this.user.last_name);
-  this.user.last_name = nuevoApellido
-  console.log(this.user.last_name)
-  console.log(this.user.email);
-  this.user.email = nuevoMail
-  console.log(this.user.email)
-  console.log(this.user.photo);
-  this.user.photo = nuevaPhoto
-  console.log(this.user.photo)
-}
+  info(newName:HTMLInputElement,newLastname:HTMLInputElement,newEmail:HTMLInputElement,newPhoto:HTMLInputElement){
+    this.usuario.name = newName.value;
+    this.usuario.last_name = newLastname.value;
+    this.usuario.email = newEmail.value;
+    this.usuario.photo = newPhoto.value;  
+    this.usuario.id_user = this.userService.user.id_user; 
+    console.log(this.usuario)
+    this.userService.edit(this.usuario)
+    .subscribe((resp: Respuesta) => 
+    {
+     
+      if (!resp.error)
+      {
+        this.toastr.success("Perfil editado correctamente", "",
+                            {timeOut:2000, positionClass:'toast-top-center'});
+         
+      }else
+      this.toastr.error("fallo")
+    })
+  }
 }

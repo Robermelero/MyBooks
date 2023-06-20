@@ -24,10 +24,10 @@ register(nuevoTitulo: string,
         nuevaFoto: string, 
         nuevoCodigo: number=0, 
         nuevoUser: number=0){
-  let nuevo: Book = new Book(nuevoTitulo, nuevoTipo, nuevoAuthor, nuevoPrecio, nuevaFoto, nuevoCodigo,nuevoUser)
-  this.apiService.add(nuevo).subscribe((resp:Respuesta) =>
+  let nuevo: Book = new Book(0,0,nuevoTitulo, nuevoTipo, nuevoAuthor, nuevoPrecio, nuevaFoto,)
+  this.apiService.addBook(nuevo).subscribe((book: Book) =>
   {
- if(!resp.error) 
+ if(book) 
  {this.toastr.success('El libro ha sido añadido correctamente')
  this.router.navigateByUrl('/books');
 }

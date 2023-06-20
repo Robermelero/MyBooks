@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
-
+import { RouterModule } from '@angular/router';
 
 
 
@@ -48,7 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     ToastrModule.forRoot({positionClass: 'toast-top-center'}),
     HttpClientModule,
-  
+    RouterModule.forRoot([]),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

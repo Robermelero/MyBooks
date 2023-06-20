@@ -1,36 +1,44 @@
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../models/book';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
 
-  private url = "http://localhost:3000/books"
-  constructor(private http: HttpClient) {}
+  private url = "http://localhost:4000";
 
-getAll(): Observable<Object> {
-  return this.http.get<Book[]>(this.url)
+  constructor(private http: HttpClient, private userService: UserService) {}
+
+  getLibros(): Observable<any> {
+    let userId = this.userService.user.id_user;
+    return this.http.get(`${this.url}/books/${userId}`);
+  }
+
+  getByUserAndBook(bookId: number): Observable<any> {
+    let userId = this.userService.user.id_user;
+    return this.http.get(`${this.url}/books/${userId}/${bookId}`);
+  }
+
+  addBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(`${this.url}/books`, book);
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<Book>(`${this.url}/books/${book.id_book}`, book);
+  }
+  
+
+  deleteBook(bookId: number): Observable<any> {
+    console.log(bookId)
+    return this.http.delete(`${this.url}/books/${bookId}`);
+  }
 }
 
-getOne(id_book:number):Observable<Object> {
-    return this.http.get<Book>(`${this.url}/${id_book}`);
-}
-
-add(newBook:Book):Observable<Object>{
-  return this.http.post(this.url, newBook)
-}
-
-edit(book:Book):Observable<Object>{
-  return this.http.put(this.url, book)
-}
-
-delete(id_book:number):Observable<Object>{
-  return this.http.delete(`${this.url}/${id_book}`)
-}
-}
 
 
 

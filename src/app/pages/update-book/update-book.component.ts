@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 
 @Component({
@@ -21,8 +22,8 @@ constructor(public apiService: BooksService, public bookservice:BooksService, pu
 }
 
 busqueda(codigo:number): void {
-  
- this.apiService.getOne(codigo).subscribe((libro: Book) => {
+  let userId = 0;
+ this.apiService.getByUserAndBook(userId).subscribe((libro: Book) => {
   if (libro) { 
     this.libroBuscado = libro;
     this.libroModificado = {...libro}
@@ -42,7 +43,7 @@ modificar(nuevoTitulo: string, nuevoTipo: string, nuevoAuthor: string, nuevoPrec
   this.libroModificado.photo = nuevaFoto;
   this.libroModificado.id_book = nuevoCodigo;
 
-  this.apiService.edit(this.libroModificado).subscribe((listo) => {
+  this.apiService.updateBook(this.libroModificado).subscribe((listo) => {
     if (listo) {
     this.toastr.success('El libro se ha modificado correctamente');
     this.router.navigateByUrl('/books');
